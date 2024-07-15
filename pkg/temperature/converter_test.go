@@ -8,8 +8,8 @@ import (
 
 func TestCelsiusToFahrenheit(t *testing.T) {
 	tests := []struct {
-		celsius    float32
-		fahrenheit float32
+		celsius    float64
+		fahrenheit float64
 	}{
 		{0, 32},
 		{100, 212},
@@ -25,8 +25,8 @@ func TestCelsiusToFahrenheit(t *testing.T) {
 
 func TestCelsiusToKelvin(t *testing.T) {
 	tests := []struct {
-		celsius float32
-		kelvin  float32
+		celsius float64
+		kelvin  float64
 	}{
 		{0, 273},
 		{100, 373},
