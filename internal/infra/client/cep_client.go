@@ -6,6 +6,12 @@ import (
 	"net/http"
 )
 
+type CEPClient struct{}
+
+func NewCEPClient() *CEPClient {
+	return &CEPClient{}
+}
+
 type CEPResponse struct {
 	CEP         string `json:"cep"`
 	Logradouro  string `json:"logradouro"`
@@ -20,16 +26,7 @@ type CEPResponse struct {
 	Siafi       string `json:"siafi"`
 }
 
-type CEPOutputDTO struct {
-	Street       string `json:"street"`
-	Complement   string `json:"complement"`
-	Unit         string `json:"unit"`
-	Neighborhood string `json:"neighborhood"`
-	City         string `json:"city"`
-	State        string `json:"state"`
-}
-
-func GetAddress(cep string) (*CEPOutputDTO, error) {
+func (c CEPClient) GetAddress(cep string) (*CEPOutputDTO, error) {
 	url := fmt.Sprintf("https://viacep.com.br/ws/%s/json/", cep)
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {

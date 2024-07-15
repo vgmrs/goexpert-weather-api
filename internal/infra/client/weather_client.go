@@ -9,6 +9,12 @@ import (
 
 const APIKey string = "88e7a17c30254bc594b54032241507"
 
+type WeatherClient struct{}
+
+func NewWeatherClient() *WeatherClient {
+	return &WeatherClient{}
+}
+
 type WeatherResponse struct {
 	Location struct {
 		Name    string  `json:"name"`
@@ -27,12 +33,7 @@ type WeatherResponse struct {
 	} `json:"current"`
 }
 
-type WeatherOutputDTO struct {
-	Celsius   float64 `json:"celsius"`
-	Condition string  `json:"condition"`
-}
-
-func GetWeather(city string) (*WeatherOutputDTO, error) {
+func (w *WeatherClient) GetWeather(city string) (*WeatherOutputDTO, error) {
 	escapedCity := url.QueryEscape(city)
 	url := fmt.Sprintf("https://api.weatherapi.com/v1/current.json?key=%s&q=%s", APIKey, escapedCity)
 

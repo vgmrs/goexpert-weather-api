@@ -17,7 +17,8 @@ func TestGetAddressByCEPRealAPI(t *testing.T) {
 		State:        "SP",
 	}
 
-	address, err := GetAddress(cep)
+	cepClient := NewCEPClient()
+	address, err := cepClient.GetAddress(cep)
 	assert.NoError(t, err)
 
 	assert.Equal(t, expected.Street, address.Street)

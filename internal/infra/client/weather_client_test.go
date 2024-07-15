@@ -8,7 +8,9 @@ import (
 
 func TestGetWeather(t *testing.T) {
 	city := "São Paulo"
-	weather, err := GetWeather(city)
+
+	weatherClient := NewWeatherClient()
+	weather, err := weatherClient.GetWeather(city)
 	assert.NoError(t, err)
 
 	assert.NotEmpty(t, weather.Condition)
