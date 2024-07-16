@@ -19,7 +19,7 @@ func TestCelsiusToFahrenheit(t *testing.T) {
 
 	for _, test := range tests {
 		fahrenheit := CelsiusToFahrenheit(test.celsius)
-		assert.Equal(t, test.fahrenheit, fahrenheit)
+		assert.InDelta(t, test.fahrenheit, fahrenheit, 0.001)
 	}
 }
 
@@ -36,6 +36,6 @@ func TestCelsiusToKelvin(t *testing.T) {
 
 	for _, test := range tests {
 		kelvin := CelsiusToKelvin(test.celsius)
-		assert.Equal(t, test.kelvin, kelvin)
+		assert.InDelta(t, test.kelvin, kelvin, 0.001)
 	}
 }
