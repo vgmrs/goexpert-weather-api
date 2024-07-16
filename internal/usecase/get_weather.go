@@ -1,6 +1,8 @@
 package usecase
 
 import (
+	"errors"
+
 	"github.com/vgmrs/goexpert-weather-api/internal/entity"
 	"github.com/vgmrs/goexpert-weather-api/internal/infra/client"
 )
@@ -10,9 +12,9 @@ type GetWeatherInputDTO struct {
 }
 
 type GetWeatherOutputDTO struct {
-	Celsius    string `json:"celsius"`
-	Kelvin     string `json:"kelvin"`
-	Fahrenheit string `json:"fahrenheit"`
+	Celsius    string `json:"temp_C"`
+	Fahrenheit string `json:"temp_F"`
+	Kelvin     string `json:"temp_K"`
 }
 
 type GetWeatherUseCase struct {
@@ -33,19 +35,19 @@ func NewGetWeatherUseCase(
 func (gw *GetWeatherUseCase) Execute(input GetWeatherInputDTO) (GetWeatherOutputDTO, error) {
 	address, err := gw.CEPClient.GetAddress(input.CEP)
 	if err != nil {
-		return GetWeatherOutputDTO{}, err
+		return GetWeatherOutputDTO{}, errors.New("can not find zipcode")
 	}
 
 	climate, err := gw.WeatherClient.GetWeather(address.City)
 	if err != nil {
-		return GetWeatherOutputDTO{}, err
+		return GetWeatherOutputDTO{}, errors.New("can not find weather for zipcode")
 	}
 
 	weather := entity.NewWeather(climate.Celsius)
 
 	return GetWeatherOutputDTO{
 		Celsius:    weather.Celsius,
-		Kelvin:     weather.Kelvin,
 		Fahrenheit: weather.Fahrenheit,
+		Kelvin:     weather.Kelvin,
 	}, nil
 }

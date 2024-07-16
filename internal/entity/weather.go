@@ -8,21 +8,21 @@ import (
 
 type Weather struct {
 	Celsius    string
-	Kelvin     string
 	Fahrenheit string
+	Kelvin     string
 }
 
 func NewWeather(c float64) *Weather {
-	k := temperature.CelsiusToKelvin(c)
 	f := temperature.CelsiusToFahrenheit(c)
+	k := temperature.CelsiusToKelvin(c)
 
 	celsius := fmt.Sprintf("%.2f", c)
-	kelvin := fmt.Sprintf("%.2f", k)
 	fahrenheit := fmt.Sprintf("%.2f", f)
+	kelvin := fmt.Sprintf("%.2f", k)
 
 	return &Weather{
 		Celsius:    celsius,
-		Kelvin:     kelvin,
 		Fahrenheit: fahrenheit,
+		Kelvin:     kelvin,
 	}
 }
