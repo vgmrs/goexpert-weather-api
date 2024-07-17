@@ -9,5 +9,4 @@ Desenvolver um sistema em Go que receba um CEP, identifica a cidade e retorna o 
 
 ### Requisitos
 
-- Utilize docker/docker-compose para que possamos realizar os testes de sua aplicação.
 - Deploy realizado no Google Cloud Run (free tier) e endereço ativo para ser acessado.
