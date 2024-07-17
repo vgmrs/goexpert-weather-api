@@ -3,10 +3,36 @@ Exercise Weather API for postgraduate Go Expert
 
 ## Description
 
-### Objetivo
+This application implements a Weather API using Clean Architecture structure in Golang.
 
-Desenvolver um sistema em Go que receba um CEP, identifica a cidade e retorna o clima atual (temperatura em graus celsius, fahrenheit e kelvin). Esse sistema deverá ser publicado no Google Cloud Run.
+## How to access
 
-### Requisitos
+This application is available at: https://goexpert-weather-api-qjjfuwmpcq-uc.a.run.app/
 
-- Deploy realizado no Google Cloud Run (free tier) e endereço ativo para ser acessado.
+> An example URL: https://goexpert-weather-api-qjjfuwmpcq-uc.a.run.app/weather/01001000
+
+## How to run
+
+### Using Golang:
+```bash
+make run
+```
+
+### Using Docker:
+```bash
+make container
+```
+
+### Using Docker Composer:
+```bash
+make up
+```
+And for down containers:
+```bash
+make down
+```
+
+### To run tests:
+```bash
+make test
+```
