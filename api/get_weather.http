@@ -1,0 +1,3 @@
+GET http://localhost:8000/weather/01001000 HTTP/1.1
+Host: localhost:8000
+Content-Type: application/json
