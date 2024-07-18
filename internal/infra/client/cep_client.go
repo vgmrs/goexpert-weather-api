@@ -2,6 +2,7 @@ package client
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"net/http"
 )
@@ -13,6 +14,7 @@ func NewCEPClient() *CEPClient {
 }
 
 type CEPResponse struct {
+	Erro        bool   `json:"erro"`
 	CEP         string `json:"cep"`
 	Logradouro  string `json:"logradouro"`
 	Complemento string `json:"complemento"`
@@ -43,6 +45,10 @@ func (c CEPClient) GetAddress(cep string) (*CEPOutputDTO, error) {
 	err = json.NewDecoder(res.Body).Decode(&data)
 	if err != nil {
 		return nil, err
+	}
+
+	if data.Erro {
+		return nil, errors.New("third party client error")
 	}
 
 	return &CEPOutputDTO{
