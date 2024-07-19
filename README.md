@@ -3,7 +3,7 @@ Exercise Weather API for postgraduate Go Expert
 
 ## Description
 
-This application implements a Weather API using Clean Architecture structure in Golang.
+This application implements a Weather API using Clean Architecture structure in Golang
 
 ## How to run
 
