@@ -7,7 +7,7 @@ import (
 	"net/url"
 )
 
-const APIKey string = "88e7a17c30254bc594b54032241507"
+const APIKey string = ""
 
 type WeatherClient struct{}
 
